@@ -20,10 +20,10 @@ model League {
 }
 
 model Team {
-  id        Int     @id @default(autoincrement())
-  name      String  @unique
-  league    League  @relation(fields: [leagueId], references: [id])
-  leagueId  Int
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  league    League    @relation(fields: [leagueId], references: [id])
+  leagueId  Int       @map("league_id)
   players   Player[]
 }
 
@@ -42,5 +42,5 @@ model Player {
   kicking   Int
   tackling  Int
   team      Team    @relation(fields: [teamId], references: [id])
-  teamId    Int
+  teamId    Int     @map("team_id")
 }
