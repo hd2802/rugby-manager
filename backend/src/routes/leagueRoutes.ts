@@ -8,9 +8,12 @@ router.get("/leagues", async (req, res) => {
     try {
         const leagueRepository = AppDataSource.getRepository(League);
         const leagues = await leagueRepository.find({
+            // Uncomment to return teams 
+            /*
             relations: {
                 teams: true
             }
+            */
         });
         
         res.json({
@@ -23,6 +26,36 @@ router.get("/leagues", async (req, res) => {
         res.status(500).json({
             success: false,
             error: "Failed to fetch leagues",
+            details: error instanceof Error ? error.message : String(error)
+        });
+    }
+});
+
+router.get("/leagues/:id", async (req, res, next) => {
+    const requestedId = req.params.id;
+    try {
+        const leagueRepository = AppDataSource.getRepository(League);
+        const league = await leagueRepository.find({
+            where: {
+                id: Number(requestedId)
+            },
+            // Uncomment to return teams
+            /*
+            relations: {
+                teams: true
+            }
+            */
+        })
+        
+        res.json({
+            success: true,
+            data: league
+        });
+    } catch (error) {
+        console.error("Error fetching league:", error);
+        res.status(500).json({
+            success: false,
+            error: "Failed to fetch league",
             details: error instanceof Error ? error.message : String(error)
         });
     }

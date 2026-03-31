@@ -25,4 +25,28 @@ router.get("/players", async (req, res) => {
     }
 });
 
+router.get("/players/:id", async (req, res, next) => {
+    const requestedId = req.params.id;
+    try {
+        const playerRepository = AppDataSource.getRepository(Player);
+        const player = await playerRepository.find({
+            where: {
+                id: Number(requestedId)
+            },
+        })
+        
+        res.json({
+            success: true,
+            data: player
+        });
+    } catch (error) {
+        console.error("Error fetching player:", error);
+        res.status(500).json({
+            success: false,
+            error: "Failed to fetch player",
+            details: error instanceof Error ? error.message : String(error)
+        });
+    }
+});
+
 export default router;
