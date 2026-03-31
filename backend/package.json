@@ -11,14 +11,12 @@
     "format": "prettier --write 'src/**/*.ts'",
     "prisma:seed": "tsx prisma/seed.ts"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
@@ -27,6 +25,7 @@
   },
   "devDependencies": {
     "@prisma/adapter-pg": "^7.6.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/helmet": "^0.0.48",
     "@types/morgan": "^1.9.10",

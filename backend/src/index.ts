@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
+import cors from "cors";
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ import { AppDataSource } from "./data-source"
 import router from "./routes/index";
 
 const app = express();
+
+app.use(cors())
 
 app.use(helmet());
 app.use(morgan("dev"));

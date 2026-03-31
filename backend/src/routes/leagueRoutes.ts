@@ -16,11 +16,7 @@ router.get("/leagues", async (req, res) => {
             */
         });
         
-        res.json({
-            success: true,
-            data: leagues,
-            count: leagues.length
-        });
+        res.json(leagues);
     } catch (error) {
         console.error("Error fetching leagues:", error);
         res.status(500).json({
@@ -47,10 +43,7 @@ router.get("/leagues/:id", async (req, res, next) => {
             */
         })
         
-        res.json({
-            success: true,
-            data: league
-        });
+        res.json(league);
     } catch (error) {
         console.error("Error fetching league:", error);
         res.status(500).json({
