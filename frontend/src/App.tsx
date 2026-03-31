@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useLeagueStore from "../src/services/leagueService"
 
 type League = {
-  id: number,
-  name: string
+    id: number,
+    name: string
+}
+
+interface LeagueState {
+    leagues: League[],
+    getLeagues: () => void;
 }
 
 function App() {
-  const [leagues, setLeagues] = useState<League[]>([]);
+  const { leagues, getLeagues } = useLeagueStore();
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/leagues')
-      .then(response => {
-        setLeagues(response.data)
-      })
-      .catch(error => {
-        console.error('There was an error fetching the leagues: ', error);
-      })
-  }, []) // Don't forget the dependency array!
-
-  console.log(typeof leagues )
+    getLeagues()
+  }, [getLeagues])
 
   return (
     <div>
