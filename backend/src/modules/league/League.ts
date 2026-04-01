@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { Team } from "../modules/team/Team"
+import { Team } from "../team/Team"
 
 @Entity({ name: "leagues" })
 export class League {
