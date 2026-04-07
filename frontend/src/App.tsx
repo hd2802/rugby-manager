@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useLeagueStore from "../src/services/leagueService"
+import useLeagueStore from "./services/leagueService"
 import Layout from "./layout";
 
 
