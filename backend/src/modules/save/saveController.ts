@@ -44,11 +44,6 @@ export const getSaveByIdWithAllInformation = async (request: Request, response: 
         const save = await saveRepository.find({
             where: {
                 id: Number(requestedId)
-            },
-            relations: {
-                leagues: true,
-                teams: true,
-                players: true
             }
         })
         response.json(save)

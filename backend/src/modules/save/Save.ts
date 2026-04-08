@@ -13,13 +13,4 @@ export class Save {
     @ManyToOne(() => User, (user) => user.saves)
     @JoinColumn({ name: "save_id" })
     user!: User
-
-    @OneToMany(() => Team, (team) => team.save)
-    teams!: Team[]
-
-    @OneToMany(() => Player, (player) => player.save)
-    players!: Player[]
-
-    @OneToMany(() => League, (league) => league.save)
-    leagues!: League[]
 }
