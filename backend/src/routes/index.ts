@@ -1,7 +1,7 @@
 import { Router } from "express";
-import leagueRoutes from "../modules/league/leagueRoutes";
-import teamRoutes from "../modules/team/teamRoutes";
-import playerRoutes from "../modules/player/playerRoutes";
+import leagueRoutes from "../modules/api/league/leagueRoutes";
+import teamRoutes from "../modules/api/team/teamRoutes";
+import playerRoutes from "../modules/api/player/playerRoutes";
 import userRoutes from "../modules/user/userRoutes";
 import saveRoutes from "../modules/save/saveRoutes"
 import loginRoutes from "../modules/login/loginRoutes";

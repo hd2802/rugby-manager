@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm"
 import { User } from "../user/User"
-import { League } from "../league/League"
-import { Player } from "../player/Player"
+import { League } from "../api/league/League"
+import { Player } from "../api/player/Player"
 import { Team } from "../team/Team"
 
 
