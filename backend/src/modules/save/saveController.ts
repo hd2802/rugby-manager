@@ -1,6 +1,40 @@
 import type { Request, Response } from "express"
 import { AppDataSource } from "../../data-source"
 import { Save } from "./Save"
+import { User } from "../user/User"
+
+import jwt from "jsonwebtoken"
+import type { JwtPayload } from "jsonwebtoken"
+
+const getTokenFrom = (request: Request) => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.startsWith('Bearer ')) {
+        return authorization.replace('Bearer ', '')
+    }
+    return null
+}
+
+export const createNewSave = async (request: Request, response: Response) => {
+    const decodedToken = jwt.verify(
+        getTokenFrom(request) || "", process.env.SECRET || ""
+    ) as JwtPayload & { id: number }
+
+    if(!decodedToken.id) {
+        return response.status(401).json({ error: 'token invalid' })
+    }
+    const userRepository = AppDataSource.getRepository(User);
+    const user = await userRepository.findOne({
+        where: {
+            id: decodedToken.id
+        }
+    })
+
+    if (!user) {
+        return response.status(400).json({ error: 'user missing or not valid' })
+    }
+    
+    // Add copying of players - creating new players etc on the creation of a new save
+}
 
 export const getSaveByIdWithAllInformation = async (request: Request, response: Response) => {
     const requestedId = request.params.id
