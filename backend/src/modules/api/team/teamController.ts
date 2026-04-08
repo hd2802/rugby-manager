@@ -1,5 +1,5 @@
 import type { Request, Response }from "express";
-import { AppDataSource } from "../../data-source";
+import { AppDataSource } from "../../../data-source";
 import { Team } from "./Team";
 
 export const getTeams = async (req: Request, res: Response) => {

@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm"
-import { League } from "./modules/league/League"
-import { Team } from "./modules/team/Team"
-import { Player } from "./modules/player/Player"
-import { User } from "./modules/user/User"
+import { League } from "./modules/api/league/League"
+import { Team } from "./modules/api/team/Team"
+import { Player } from "./modules/api/player/Player"
+import { User } from "./modules/auth/user/User"
 import { Save } from "./modules/save/Save"
 
 export const AppDataSource = new DataSource({
