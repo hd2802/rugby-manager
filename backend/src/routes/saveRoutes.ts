@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { getSaveByIdWithAllInformation } from "../controllers/saveController"
+import { getSaveByIdWithAllInformation } from "../controllers/save/saveController"
 
 const router = Router()
 

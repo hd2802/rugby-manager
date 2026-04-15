@@ -1,9 +1,9 @@
 import { DataSource } from "typeorm"
-import { League } from "./models/League"
-import { Team } from "./models/Team"
-import { Player } from "./models/Player"
-import { User } from "./models/User"
-import { Save } from "./models/Save"
+import { League } from "./models/api/League"
+import { Team } from "./models/api/Team"
+import { Player } from "./models/api/Player"
+import { User } from "./models/auth/User"
+import { Save } from "./models/save/Save"
 
 export const AppDataSource = new DataSource({
     type: "postgres",

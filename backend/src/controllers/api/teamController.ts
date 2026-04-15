@@ -1,6 +1,6 @@
 import type { Request, Response }from "express";
-import { AppDataSource } from "../data-source";
-import { Team } from "../models/Team";
+import { AppDataSource } from "../../data-source";
+import { Team } from "../../models/api/Team";
 
 export const getTeams = async (req: Request, res: Response) => {
     try {
